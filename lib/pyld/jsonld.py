@@ -1453,7 +1453,9 @@ class JsonLdProcessor(object):
         bnode = '(_:(?:[A-Za-z][A-Za-z0-9]*))'
         plain = '"([^"\\\\]*(?:\\\\.[^"\\\\]*)*)"'
         datatype = '(?:\\^\\^' + iri + ')'
-        language = '(?:@([a-z]+(?:-[a-z0-9]+)*))'
+        # According to https://tools.ietf.org/html/rfc3066 the language
+        # tag can be upper or lowercase
+        language = '(?:@([A-Za-z]+(?:-[A-za-z0-9]+)*))'
         literal = '(?:' + plain + '(?:' + datatype + '|' + language + ')?)'
         ws = '[ \\t]+'
         wso = '[ \\t]*'
